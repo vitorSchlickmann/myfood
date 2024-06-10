@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.algaworks.algafood.domain.model.Cozinha;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,8 +38,8 @@ public class EstadoRepositoryImpl implements EstadoRepository {
 	
 	@Transactional
 	@Override
-	public void remover(Estado estado) {
-		estado = buscar(estado.getId());
+	public void remover(Long id) {
+		Estado estado = buscar(id);
 		manager.remove(estado);
 	}
 
